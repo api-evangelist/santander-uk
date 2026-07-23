@@ -1,0 +1,21 @@
+generated: '2026-07-23'
+method: searched
+source: https://sandbox-developer.santander.co.uk/sanuk/external-sandbox/faq-page
+summary: >-
+  Santander UK operates a dedicated Open Banking sandbox for TPPs to test the OBIE
+  Read/Write API family before production onboarding. The sandbox mirrors the
+  production FAPI security model (OAuth2/OIDC, mTLS, SCA) against model-bank test
+  data rather than real customer accounts.
+environments:
+  - name: sandbox
+    portal: https://sandbox-developer.santander.co.uk/sanuk/external-sandbox/faq-page
+    base_host: openbanking.santander.co.uk (sandbox realm)
+    auth: FAPI OAuth2/OIDC + mTLS with sandbox/test certificates
+  - name: production
+    portal: https://developer.santander.co.uk/sanuk/external/
+    auth: FAPI OAuth2/OIDC + mTLS with eIDAS/OBIE production certificates
+test_data:
+  note: >-
+    Test PSU credentials and model-bank account/transaction fixtures are provisioned
+    per registered TPP inside the sandbox after onboarding; specific magic test
+    values are not published anonymously and are not reproduced here (no fabrication).

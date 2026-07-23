@@ -1,0 +1,32 @@
+# Santander UK
+
+> Santander UK plc is a CMA9 UK retail and commercial bank and a wholly owned, ring-fenced subsidiary of Banco Santander S.A. Under PSD2 and the UK CMA Order it operates the "Santander Developers" portal, exposing free unauthenticated Open Data APIs (ATMs, branches, product reference data) alongside the OBIE Read/Write API family — Account & Transaction Information (AIS), Payment Initiation (PIS), and Confirmation of Funds (CBPII) — secured with FAPI-grade OAuth2/OIDC, mutual-TLS, and PSD2 strong customer authentication.
+
+## APIs
+
+- [Santander UK Open Data API](https://api-portal.omni.slz.santander.co.uk/external/opendata/atms): Free, public, unauthenticated reference data — ATMs, branches, personal & business current accounts, unsecured SME loans, commercial credit cards (OBIE Open Data standard).
+- [Account & Transaction Information API (AIS)](https://developer.santander.co.uk/sanuk/external/product): OBIE Read/Write account, balance, transaction, and party data with customer consent.
+- [Payment Initiation API (PIS)](https://developer.santander.co.uk/sanuk/external/product): OBIE Read/Write domestic, scheduled, standing-order, international, and file payments.
+- [Confirmation of Funds API (CBPII)](https://developer.santander.co.uk/sanuk/external/product): OBIE Read/Write confirmation of funds availability for card-based payment instrument issuers.
+
+## Specs
+
+- [Open Data Swagger 2.0](openapi/obie-opendata-swagger.json)
+- [Account & Transaction OpenAPI](openapi/obie-account-info-openapi.yaml)
+- [Payment Initiation OpenAPI](openapi/obie-payment-initiation-openapi.yaml)
+- [Confirmation of Funds OpenAPI](openapi/obie-confirmation-funds-openapi.yaml)
+
+## Auth & conventions
+
+- [Authentication profile](authentication/santander-uk-authentication.yml): FAPI OAuth2/OIDC (TPP client-credentials + PSU authorization-code), mTLS, PSD2 SCA.
+- [OAuth scopes](scopes/santander-uk-scopes.yml): accounts, payments, fundsconfirmations (+ openid).
+- [API conventions](conventions/santander-uk-conventions.yml): x-idempotency-key (24h), x-jws-signature, x-fapi-interaction-id tracing, link+meta pagination.
+- [Error catalog](errors/santander-uk-problem-types.yml): OBIE OBErrorResponse1 envelope.
+- [Conformance](conformance/santander-uk-conformance.yml): OAuth2, OIDC, FAPI, PSD2, UK Open Banking, mTLS, idempotency.
+
+## Docs
+
+- [Santander Developers portal](https://developer.santander.co.uk/sanuk/external/)
+- [Documentation](https://developer.santander.co.uk/sanuk/external/product)
+- [Sandbox](https://sandbox-developer.santander.co.uk/sanuk/external-sandbox/faq-page)
+- [Service status](https://www.santander.co.uk/personal/support/service-status)

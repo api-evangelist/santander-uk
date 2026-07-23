@@ -48,6 +48,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/obie-opendata-swagger.json
+  - type: Overlay
+    url: overlays/santander-uk-opendata-overlay.yaml
   - type: Documentation
     url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
   - type: APIReference
@@ -67,6 +69,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/obie-account-info-openapi.yaml
+  - type: Overlay
+    url: overlays/santander-uk-account-info-overlay.yaml
   - type: Documentation
     url: https://developer.santander.co.uk/sanuk/external/product
   - type: APIReference
@@ -86,6 +90,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/obie-payment-initiation-openapi.yaml
+  - type: Overlay
+    url: overlays/santander-uk-payment-initiation-overlay.yaml
   - type: Documentation
     url: https://developer.santander.co.uk/sanuk/external/product
   - type: APIReference
@@ -105,11 +111,39 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/obie-confirmation-funds-openapi.yaml
+  - type: Overlay
+    url: overlays/santander-uk-confirmation-funds-overlay.yaml
   - type: Documentation
     url: https://developer.santander.co.uk/sanuk/external/product
   - type: APIReference
     url: https://developer.santander.co.uk/sanuk/external/
 common:
+- type: AgenticAccess
+  url: agentic-access/santander-uk-agentic-access.yml
+- type: DomainSecurity
+  url: security/santander-uk-domain-security.yml
+- type: OAuthScopes
+  url: scopes/santander-uk-scopes.yml
+- type: Authentication
+  url: authentication/santander-uk-authentication.yml
+- type: Conventions
+  url: conventions/santander-uk-conventions.yml
+- type: Idempotency
+  url: conventions/santander-uk-conventions.yml
+- type: ErrorCatalog
+  url: errors/santander-uk-problem-types.yml
+- type: Conformance
+  url: conformance/santander-uk-conformance.yml
+- type: Lifecycle
+  url: lifecycle/santander-uk-lifecycle.yml
+- type: DataModel
+  url: data-model/santander-uk-data-model.yml
+- type: LLMsTxt
+  url: llms/santander-uk-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: TermsOfService
+  url: https://www.openbanking.org.uk/terms
 - type: Website
   url: https://www.santander.co.uk/
 - type: DeveloperPortal

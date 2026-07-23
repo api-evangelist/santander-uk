@@ -1,0 +1,35 @@
+generated: '2026-07-23'
+method: derived
+source: >-
+  openapi/*.yaml securitySchemes + parameters + error schema; OBIE Read/Write Data
+  API Standard v3.1/v4.0; PSD2 / UK CMA Open Banking regulatory context
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: TPPOAuth2Security (clientCredentials) + PSUOAuth2Security (authorizationCode) schemes
+  - id: oidc
+    conforms: true
+    evidence: OBIE Read/Write requires OpenID Connect for PSU authentication / SCA
+  - id: fapi
+    conforms: true
+    evidence: FAPI-grade profile mandated by OBIE (mTLS, private_key_jwt, x-jws-signature, x-fapi-* headers)
+  - id: psd2
+    conforms: true
+    evidence: AIS/PIS/CBPII surfaces implement PSD2 Access-to-Account with SCA
+  - id: open-banking-uk
+    conforms: true
+    evidence: specs are the OBIE Read/Write Data API Standard (Account & Transaction, Payment Initiation, Confirmation of Funds)
+  - id: mutual-tls
+    conforms: true
+    evidence: OBIE mandates mTLS client authentication with eIDAS/OBIE transport certificates
+  - id: idempotency
+    conforms: true
+    evidence: x-idempotency-key header, 24h retention, on consent/payment POST operations
+  - id: message-signing
+    conforms: true
+    evidence: x-jws-signature detached JWS on payment-initiation writes
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: uses OBIE OBErrorResponse1 envelope, not application/problem+json
+  - id: json-api
+    conforms: false

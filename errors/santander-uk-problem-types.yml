@@ -1,0 +1,53 @@
+generated: '2026-07-23'
+method: derived
+source: >-
+  openapi/obie-account-info-openapi.yaml, openapi/obie-payment-initiation-openapi.yaml,
+  openapi/obie-confirmation-funds-openapi.yaml
+format: obie-error
+note: >-
+  Santander UK's Read/Write APIs return the OBIE OBErrorResponse1 envelope, not
+  RFC 9457 problem+json. The envelope carries a high-level Code/Id/Message plus an
+  Errors[] array of {ErrorCode, Message, Path, Url}. ErrorCode values are OBIE
+  URN strings (e.g. UK.OBIE.Field.Invalid). The HTTP statuses below are derived
+  from the 4xx/5xx responses declared across the three Read/Write specs.
+envelope:
+  schema: OBErrorResponse1
+  fields: [Code, Id, Message, Errors]
+  error_item_fields: [ErrorCode, Message, Path, Url]
+problems:
+  - status: 400
+    title: Bad request
+    description: Request failed OBIE schema/field validation (UK.OBIE.Field.* / UK.OBIE.Header.*).
+    envelope: OBErrorResponse1
+  - status: 401
+    title: Unauthorized
+    description: Missing, expired, or invalid access token / SCA not completed.
+  - status: 403
+    title: Forbidden
+    description: Token lacks the required scope or consent for the requested resource.
+  - status: 404
+    title: Not found
+    description: Consent, account, payment, or resource id does not exist.
+  - status: 405
+    title: Method not allowed
+    description: HTTP method not supported for the resource.
+  - status: 406
+    title: Not acceptable
+    description: Accept header requests an unsupported representation.
+  - status: 409
+    title: Conflict
+    description: Idempotency conflict or resource-state conflict (payment-initiation writes).
+    applies_to: [payment-initiation]
+  - status: 415
+    title: Unsupported media type
+    description: Content-Type is not application/json.
+  - status: 422
+    title: Unprocessable entity
+    description: Semantically invalid payment instruction (UK.OBIE.Rules.* / insufficient funds handling).
+    applies_to: [payment-initiation]
+  - status: 429
+    title: Too many requests
+    description: Polling / rate limit exceeded per OBIE Operational Guidelines.
+  - status: 500
+    title: Internal server error
+    description: Unexpected ASPSP-side failure.

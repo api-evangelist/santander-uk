@@ -1,0 +1,14 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Santander UK Open Data API
+  version: 1.0.0
+extends: openapi/obie-opendata-swagger.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: santander-uk
+      x-apievangelist-standard: OBIE Read/Write Data API Standard
+      x-apievangelist-security-profile: FAPI OAuth2/OIDC + mTLS + PSD2 SCA
+      x-apievangelist-conventions: conventions/santander-uk-conventions.yml
+      x-apievangelist-errors: errors/santander-uk-problem-types.yml
+      x-apievangelist-conformance: conformance/santander-uk-conformance.yml

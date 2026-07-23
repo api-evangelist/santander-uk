@@ -1,0 +1,76 @@
+generated: '2026-07-23'
+method: derived
+source: openapi/obie-account-info-openapi.yaml (OBIE Account & Transaction resource model)
+summary: >-
+  Entity-relationship graph derived from the OBIE Account & Transaction (AIS)
+  resource tree. An AccountAccessConsent authorises read access; the Account is the
+  root aggregate, with sub-resources reached via /accounts/{AccountId}/... paths.
+entities:
+  - name: AccountAccessConsent
+    id_field: ConsentId
+    root: true
+    note: Consent resource that authorises AIS read access with agreed permissions.
+  - name: Account
+    id_field: AccountId
+    root: true
+  - name: Balance
+  - name: Transaction
+  - name: Beneficiary
+  - name: DirectDebit
+  - name: StandingOrder
+  - name: ScheduledPayment
+  - name: Statement
+    id_field: StatementId
+  - name: Party
+  - name: Offer
+  - name: Product
+relationships:
+  - from: Account
+    to: Balance
+    type: has_many
+    via: AccountId
+  - from: Account
+    to: Transaction
+    type: has_many
+    via: AccountId
+  - from: Account
+    to: Beneficiary
+    type: has_many
+    via: AccountId
+  - from: Account
+    to: DirectDebit
+    type: has_many
+    via: AccountId
+  - from: Account
+    to: StandingOrder
+    type: has_many
+    via: AccountId
+  - from: Account
+    to: ScheduledPayment
+    type: has_many
+    via: AccountId
+  - from: Account
+    to: Statement
+    type: has_many
+    via: AccountId
+  - from: Account
+    to: Party
+    type: has_many
+    via: AccountId
+  - from: Account
+    to: Offer
+    type: has_many
+    via: AccountId
+  - from: Account
+    to: Product
+    type: has_one
+    via: AccountId
+  - from: Statement
+    to: Transaction
+    type: has_many
+    via: StatementId
+  - from: AccountAccessConsent
+    to: Account
+    type: has_many
+    via: ConsentId
+    note: consent grants access to one or more accounts selected during authorisation

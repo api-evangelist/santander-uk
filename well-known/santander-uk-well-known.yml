@@ -1,0 +1,48 @@
+generated: '2026-07-23'
+method: searched
+source: probed /.well-known/ across every apis.yml base host
+note: >-
+  Every probe either returned a bot-challenge/403 (developer.santander.co.uk is
+  behind Imperva/Incapsula) or an HTTP 200 whose body is the Angular SPA HTML
+  shell (openbanking.santander.co.uk serves a catch-all app document for unknown
+  paths), not a real machine-readable discovery document. No genuine security.txt,
+  OIDC, or OAuth-authorization-server document is publicly resolvable anonymously;
+  the real FAPI OIDC discovery endpoints are gated behind eIDAS/OBIE onboarding.
+  No WellKnown/SecurityTxt pointer is wired because no valid document was retrieved.
+hosts:
+  - host: https://openbanking.santander.co.uk
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        valid: false
+        note: HTML SPA shell, not RFC 9116 text
+      - path: /.well-known/openid-configuration
+        status: 200
+        valid: false
+        note: HTML SPA shell, not OIDC JSON
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        valid: false
+        note: HTML SPA shell, not RFC 8414 JSON
+  - host: https://developer.santander.co.uk
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+        valid: false
+        note: Imperva/Incapsula bot challenge
+      - path: /.well-known/openid-configuration
+        status: 403
+        valid: false
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+        valid: false
+  - host: https://www.santander.co.uk
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        valid: false
+  - host: https://api-portal.omni.slz.santander.co.uk
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        valid: false

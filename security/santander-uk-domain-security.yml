@@ -1,0 +1,26 @@
+generated: '2026-07-23'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.santander.co.uk
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 22 23:59:59 2026 GMT
+  hsts: false
+- host: api-portal.omni.slz.santander.co.uk
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 10 22:05:49 2026 GMT
+  hsts: null
+- host: developer.santander.co.uk
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 19 03:35:27 2026 GMT
+  hsts: null
+domains:
+- domain: santander.co.uk
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

@@ -1,0 +1,16 @@
+generated: '2026-07-23'
+method: generated
+source: OBIE Read/Write OpenAPI operations (grep-verified operationIds) + conventions/errors artifacts
+skills:
+  - file: santander-uk-account-information.md
+    name: Access Santander UK account and transaction data (AIS)
+    api: openapi/obie-account-info-openapi.yaml
+    operations: [CreateAccountAccessConsents, GetAccounts, GetAccountsAccountIdBalances, GetAccountsAccountIdTransactions]
+  - file: santander-uk-domestic-payment.md
+    name: Initiate a Santander UK domestic payment (PIS)
+    api: openapi/obie-payment-initiation-openapi.yaml
+    operations: [CreateDomesticPaymentConsents, GetDomesticPaymentConsentsConsentIdFundsConfirmation, CreateDomesticPayments, GetDomesticPaymentsDomesticPaymentId]
+  - file: santander-uk-confirmation-of-funds.md
+    name: Confirm funds availability on a Santander UK account (CBPII)
+    api: openapi/obie-confirmation-funds-openapi.yaml
+    operations: [CreateFundsConfirmationConsents, GetFundsConfirmationConsentsConsentId, CreateFundsConfirmations]

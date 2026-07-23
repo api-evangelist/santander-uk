@@ -1,0 +1,61 @@
+generated: '2026-07-23'
+method: derived
+source: >-
+  openapi/obie-account-info-openapi.yaml, openapi/obie-payment-initiation-openapi.yaml,
+  openapi/obie-confirmation-funds-openapi.yaml (OBIE Read/Write Data API Standard)
+summary: >-
+  Cross-cutting request/response semantics for the OBIE Read/Write API family as
+  implemented by Santander UK. These conventions are defined by the Open Banking
+  Implementation Entity (OBIE) Read/Write Data API Standard and inherited by every
+  ASPSP, so they apply uniformly across the AIS, PIS, and CBPII surfaces.
+authentication:
+  style: FAPI 2.0 / FAPI 1.0 Advanced OAuth2 + OpenID Connect
+  transport_security: mutual-TLS (mTLS) client authentication with eIDAS/OBIE certificates
+  strong_customer_authentication: PSD2 SCA via the PSUOAuth2Security authorization-code flow
+  client_auth: private_key_jwt / tls_client_auth
+  detail: authentication/santander-uk-authentication.yml
+  scopes: scopes/santander-uk-scopes.yml
+idempotency:
+  supported: true
+  mechanism: header
+  header: x-idempotency-key
+  scope: POST creation of consents and payment/funds-confirmation resources
+  retention: 24 hours
+  max_length: 40 characters
+  note: >-
+    Every request is processed only once per x-idempotency-key value; the key is
+    valid for 24 hours (OBIE idempotency contract). Present on payment-order and
+    consent POST operations in the PIS and CBPII specs.
+request_signing:
+  header: x-jws-signature
+  type: detached JWS (RFC 7515)
+  scope: payment-initiation write operations
+tracing:
+  interaction_id: x-fapi-interaction-id
+  echoed_in_response: true
+  additional_headers:
+    - x-fapi-auth-date
+    - x-fapi-customer-ip-address
+    - x-customer-user-agent
+pagination:
+  style: link-and-meta
+  request_params: [page]
+  response_fields:
+    Links: [Self, First, Prev, Next, Last]
+    Meta: [TotalPages, FirstAvailableDateTime, LastAvailableDateTime]
+versioning:
+  scheme: uri-path
+  observed: [v3.1, v4.0]
+  detail: lifecycle/santander-uk-lifecycle.yml
+error_envelope:
+  media_type: application/json
+  schema: OBErrorResponse1
+  fields: [Code, Id, Message, Errors]
+  error_item_fields: [ErrorCode, Message, Path, Url]
+  detail: errors/santander-uk-problem-types.yml
+rate_limit_signaling:
+  status_code: 429
+  note: >-
+    Polling rate limits are enforced per the OBIE Operational Guidelines; a 429
+    Too Many Requests is returned. Explicit RateLimit-* headers are not declared
+    in the OBIE spec.

@@ -1,0 +1,25 @@
+generated: '2026-07-23'
+method: searched
+source: >-
+  developer.santander.co.uk developer portal; OBIE Read/Write Data API Standard
+  release train; www.santander.co.uk service-status page
+versioning:
+  scheme: uri-path
+  observed: [v3.1, v4.0]
+  note: >-
+    Santander UK tracks the OBIE Read/Write Data API Standard version train. The
+    live API base paths are versioned in the URI (/open-banking/v3.1/...); the
+    harvested Read/Write specs are OBIE v4.0.1.
+deprecation:
+  policy_url: https://developer.santander.co.uk/sanuk/external/
+  sunset_header: false
+  note: >-
+    Version transitions follow the OBIE standard release schedule and Santander
+    Developers portal notices; no machine-readable RFC 8594 Sunset/Deprecation
+    header support is declared in the specs.
+sla:
+  note: >-
+    Availability and performance are governed by the FCA/PRA regulatory
+    obligations and OBIE Operational Guidelines rather than a published developer SLA.
+status_page: https://www.santander.co.uk/personal/support/service-status
+deprecated_operations: []
