@@ -1,0 +1,150 @@
+aid: santander-uk
+name: Santander UK
+review:
+  question: >-
+    Does Santander UK expose a real public API surface - a developer portal, a
+    confirmed live Open Data endpoint, and OBIE Read/Write conformance - and what
+    is the spec provenance and authentication model?
+  answer: true
+  date: '2026-07-23'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    Santander UK plc is a CMA9 bank and runs a genuine, documented Open Banking
+    developer program branded "Santander Developers" at developer.santander.co.uk
+    (with a sandbox at sandbox-developer.santander.co.uk). The portal front door
+    returns HTTP 403 to unauthenticated bots/crawlers but is a real, live product
+    portal (confirmed via search index + the sandbox and product paths). It
+    publishes two OBIE surfaces:
+
+    A. OPEN DATA (public, unauthenticated) - ATMs, branches, and product reference
+       data (personal & business current accounts, unsecured SME loans, commercial
+       credit cards). These are documented via a Kong-powered Swagger UI portal at
+       https://api-portal.omni.slz.santander.co.uk/external/opendata/{atms,branches,
+       products,personal-current-accounts,business-current-accounts,
+       unsecured-sme-loans,commercial-credit-cards}. Every path returned HTTP 200,
+       but the responses are the HTML Swagger-UI documentation shell (Content-Type
+       text/html), fronted by Imperva/Incapsula and the Kong gateway - a raw JSON
+       Open Data payload could NOT be confirmed from an unauthenticated bot, so the
+       endpoints are recorded as documented-and-live-portal but JSON-unverified.
+
+    B. READ/WRITE (OBIE Read/Write standard, FAPI-secured) - Account & Transaction
+       Information (AIS), Payment Initiation (PIS), and Confirmation of Funds
+       (CBPII). Santander UK states it uses the latest Open Banking Read/Write
+       Standards (v3.1 through v4) on its cloud platform. These require developer
+       onboarding with OBIE/eIDAS certificates and are secured with FAPI-grade
+       OAuth2/OIDC, mutual-TLS client authentication, and PSD2 strong customer
+       authentication - they are not callable without credentials and no fake
+       credentials were fabricated.
+  specProvenance:
+    openData:
+      provenance: OBIE shared standard (NOT a Santander-proprietary contract)
+      file: openapi/obie-opendata-swagger.json
+      source: https://github.com/OpenBankingUK/opendata-api-spec-compiled
+      note: >-
+        Open Data API standard, Swagger 2.0, info.title "Open Data API" v1.3.
+        Santander UK's Open Data product conforms to this OBIE standard; the
+        harvested file is the shared standard, not Santander's own published spec.
+    readWrite:
+      provenance: OBIE shared standard (NOT a Santander-proprietary contract)
+      files:
+        - openapi/obie-account-info-openapi.yaml
+        - openapi/obie-payment-initiation-openapi.yaml
+        - openapi/obie-confirmation-funds-openapi.yaml
+      source: https://github.com/OpenBankingUK/read-write-api-specs
+      note: >-
+        OpenAPI 3.0.0 documents for the OBIE Account & Transaction (AIS), Payment
+        Initiation (PIS), and Confirmation of Funds (CBPII) APIs. These are the
+        shared OBIE Read/Write standard specs that Santander UK conforms to; the
+        bank's own contract-level spec is behind portal onboarding and was not
+        publicly downloadable.
+  authModel:
+    openData: None (public, unauthenticated reference data)
+    readWrite:
+      - FAPI (Financial-grade API) OAuth2 / OpenID Connect
+      - Mutual-TLS (mTLS) client authentication with OBIE/eIDAS certificates
+      - PSD2 Strong Customer Authentication (SCA)
+      - Dynamic Client Registration via the OBIE directory
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+      documented: true
+      note: >-
+        Open Data reference API. All product paths return HTTP 200 (text/html
+        Swagger-UI shell via Kong + Incapsula); raw JSON payload not confirmed
+        unauthenticated.
+    - protocol: REST
+      scheme: https
+      baseURL: https://openbanking.santander.co.uk/open-banking/v3.1/aisp
+      documented: true
+      note: >-
+        OBIE Read/Write AIS. openbanking.santander.co.uk is a live Santander OB
+        domain that serves an HTML SPA / customer app to unauthenticated requests
+        (including .well-known/openid-configuration), so the production RW base and
+        OIDC config could not be verified as JSON without FAPI mTLS credentials.
+    - protocol: REST
+      scheme: https
+      baseURL: https://openbanking.santander.co.uk/open-banking/v3.1/pisp
+      documented: true
+      note: OBIE Read/Write PIS; FAPI mTLS + SCA required, unverified unauthenticated.
+    - protocol: REST
+      scheme: https
+      baseURL: https://openbanking.santander.co.uk/open-banking/v3.1/cbpii
+      documented: true
+      note: OBIE Read/Write CBPII; FAPI mTLS + SCA required, unverified unauthenticated.
+  probes:
+    - url: https://developer.santander.co.uk/sanuk/external/
+      status: 403
+      note: Real Santander Developers portal; 403 to bots, live per search index.
+    - url: https://developer.santander.co.uk/sanuk/external/product
+      status: 403
+      note: API products catalogue page (Open Data + Read/Write), 403 to bots.
+    - url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+      status: 200
+      contentType: text/html
+      note: Open Data ATMs Swagger-UI doc portal (Kong + Incapsula), not raw JSON.
+    - url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+      status: 200
+      contentType: text/html
+    - url: https://api-portal.omni.slz.santander.co.uk/external/opendata/products
+      status: 200
+      contentType: text/html
+    - url: https://www.santander.co.uk/
+      status: 200
+    - url: https://www.santander.co.uk/personal/support/service-status
+      status: 200
+sources:
+  - url: https://developer.santander.co.uk/sanuk/external/
+    type: DeveloperPortal
+    note: Santander Developers portal home.
+  - url: https://developer.santander.co.uk/sanuk/external/product
+    type: Documentation
+    note: API products - Open Data plus Open Banking Read/Write.
+  - url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+    type: APIReference
+    note: Open Data ATMs API Swagger doc (Open Banking spec 2.2.x lineage).
+  - url: https://github.com/OpenBankingUK/read-write-api-specs
+    type: OpenAPI
+    note: OBIE Read/Write standard specs harvested for AIS, PIS, CBPII.
+  - url: https://github.com/OpenBankingUK/opendata-api-spec-compiled
+    type: OpenAPI
+    note: OBIE Open Data compiled Swagger harvested for the Open Data API.
+  - url: https://www.openbankingtracker.com/provider/santander-uk
+    type: Reference
+    note: Third-party Open Banking tracker profile for Santander UK.
+actions:
+  openapiHarvested: true
+  openapiFiles:
+    - openapi/obie-opendata-swagger.json
+    - openapi/obie-account-info-openapi.yaml
+    - openapi/obie-payment-initiation-openapi.yaml
+    - openapi/obie-confirmation-funds-openapi.yaml
+  openDataConfirmed: false
+  reason: >-
+    Open Data endpoints return HTTP 200 but as HTML Swagger-UI/gateway pages behind
+    Imperva/Incapsula and Kong; a raw JSON Open Data payload was not obtainable
+    unauthenticated, so open-data-confirmed is recorded false despite live 200s.
+    All four APIs are represented from real, documented Santander surfaces, and the
+    harvested OpenAPI/Swagger files are the shared OBIE standards (labelled as such),
+    not fabricated bank-proprietary contracts.

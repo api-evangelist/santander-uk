@@ -1,0 +1,129 @@
+aid: santander-uk
+url: https://raw.githubusercontent.com/api-evangelist/santander-uk/refs/heads/main/apis.yml
+name: Santander UK
+kind: company
+description: Santander UK plc is a major British retail and commercial bank and one
+  of the CMA9 banks mandated to deliver UK Open Banking. It is a wholly owned,
+  ring-fenced subsidiary of Banco Santander S.A. of Madrid, Spain, and was formed
+  from the former Abbey National, Alliance & Leicester, and the savings business of
+  Bradford & Bingley. Operating from Milton Keynes with a registered office in
+  London, it serves around 14 million active personal, business, and corporate
+  customers. Santander UK is authorised by the Prudential Regulation Authority and
+  regulated by the Financial Conduct Authority and the PRA. Under PSD2 and the CMA
+  Order it publishes a developer portal ("Santander Developers") exposing free,
+  unauthenticated Open Data APIs (ATMs, branches, and product reference data) plus
+  the OBIE Read/Write API family - Account & Transaction Information (AIS), Payment
+  Initiation (PIS), and Confirmation of Funds (CBPII) - conformant to the Open
+  Banking Implementation Entity standard and secured with FAPI-grade OAuth2/OIDC,
+  mutual-TLS client authentication, and PSD2 strong customer authentication.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial Services
+- Banking
+- Open Banking
+- PSD2
+- OBIE
+- CMA9
+- United Kingdom
+- Payments
+- Account Information
+- FAPI
+created: '2026-07-23'
+modified: '2026-07-23'
+specificationVersion: '0.19'
+apis:
+- aid: santander-uk:santander-uk-open-data-api
+  name: Santander UK Open Data API
+  description: Free, public, unauthenticated Open Data reference API publishing
+    Santander UK ATMs, branches, and product information (personal & business
+    current accounts, unsecured SME loans, commercial credit cards) per the OBIE
+    Open Data standard.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Open Data
+  - ATMs
+  - Branches
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/obie-opendata-swagger.json
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+- aid: santander-uk:santander-uk-account-information-api
+  name: Santander UK Account & Transaction Information API
+  description: OBIE Read/Write Account and Transaction Information (AIS) API for
+    accessing account, balance, transaction, and party data with customer consent.
+    FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA); onboarding via the Santander
+    Developers portal with OBIE/eIDAS certificates.
+  humanURL: https://developer.santander.co.uk/sanuk/external/product
+  baseURL: https://openbanking.santander.co.uk/open-banking/v3.1/aisp
+  tags:
+  - Account Information
+  - AIS
+  - Read/Write
+  properties:
+  - type: OpenAPI
+    url: openapi/obie-account-info-openapi.yaml
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-payment-initiation-api
+  name: Santander UK Payment Initiation API
+  description: OBIE Read/Write Payment Initiation (PIS) API for initiating domestic,
+    scheduled, standing-order, international, and file payments on behalf of
+    customers. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA); onboarding via the
+    Santander Developers portal with OBIE/eIDAS certificates.
+  humanURL: https://developer.santander.co.uk/sanuk/external/product
+  baseURL: https://openbanking.santander.co.uk/open-banking/v3.1/pisp
+  tags:
+  - Payment Initiation
+  - PIS
+  - Read/Write
+  properties:
+  - type: OpenAPI
+    url: openapi/obie-payment-initiation-openapi.yaml
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-confirmation-of-funds-api
+  name: Santander UK Confirmation of Funds API
+  description: OBIE Read/Write Confirmation of Funds (CBPII) API allowing an
+    authorised card-based payment instrument issuer to confirm the availability of
+    funds on a customer account. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA);
+    onboarding via the Santander Developers portal with OBIE/eIDAS certificates.
+  humanURL: https://developer.santander.co.uk/sanuk/external/product
+  baseURL: https://openbanking.santander.co.uk/open-banking/v3.1/cbpii
+  tags:
+  - Confirmation of Funds
+  - CBPII
+  - Read/Write
+  properties:
+  - type: OpenAPI
+    url: openapi/obie-confirmation-funds-openapi.yaml
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+common:
+- type: Website
+  url: https://www.santander.co.uk/
+- type: DeveloperPortal
+  url: https://developer.santander.co.uk/sanuk/external/
+- type: Documentation
+  url: https://developer.santander.co.uk/sanuk/external/product
+- type: Sandbox
+  url: https://sandbox-developer.santander.co.uk/sanuk/external-sandbox/faq-page
+- type: LinkedIn
+  url: https://www.linkedin.com/company/santander-uk
+- type: StatusPage
+  url: https://www.santander.co.uk/personal/support/service-status
+- type: About
+  url: https://www.santander.co.uk/about-santander
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
