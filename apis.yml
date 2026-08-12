@@ -118,6 +118,8 @@ apis:
   - type: APIReference
     url: https://developer.santander.co.uk/sanuk/external/
 common:
+- type: MCPServer
+  url: mcp/santander-uk-mcp.yml
 - type: AgenticAccess
   url: agentic-access/santander-uk-agentic-access.yml
 - type: DomainSecurity
