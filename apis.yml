@@ -30,7 +30,7 @@ tags:
 - FAPI
 created: '2026-07-23'
 modified: '2026-07-23'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: santander-uk:santander-uk-open-data-api
   name: Santander UK Open Data API
