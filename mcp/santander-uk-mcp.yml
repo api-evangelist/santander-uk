@@ -1,38 +1,42 @@
 generated: '2026-07-23'
 method: derived
 status: candidate
-note: >-
-  Santander UK publishes no official hosted/remote MCP server. This is a CANDIDATE
-  tool list derived from the OBIE Read/Write OpenAPI operations to illustrate an
-  agent-facing surface; it is NOT a live server and NO type:MCPServer pointer is
-  wired in apis.yml (no fabrication of a hosted endpoint). Every tool binds to a
-  real operationId in the referenced spec.
+note: Santander UK publishes no official hosted/remote MCP server. This is a CANDIDATE tool list derived
+  from the OBIE Read/Write OpenAPI operations to illustrate an agent-facing surface; it is NOT a live
+  server and NO type:MCPServer pointer is wired in apis.yml (no fabrication of a hosted endpoint). Every
+  tool binds to a real operationId in the referenced spec.
 server:
   name: santander-uk-open-banking
   transport: http
   url: null
 tools:
-  - name: list_accounts
-    description: List the customer accounts authorised by an account-access consent.
-    source_operation: openapi/obie-account-info-openapi.yaml#GetAccounts
-  - name: get_account_balances
-    description: Read balances for an account.
-    source_operation: openapi/obie-account-info-openapi.yaml#GetAccountsAccountIdBalances
-  - name: get_account_transactions
-    description: Read transactions for an account.
-    source_operation: openapi/obie-account-info-openapi.yaml#GetAccountsAccountIdTransactions
-  - name: create_account_access_consent
-    description: Create an account-access consent to authorise AIS read access.
-    source_operation: openapi/obie-account-info-openapi.yaml#CreateAccountAccessConsents
-  - name: create_domestic_payment_consent
-    description: Register intent to initiate a domestic payment (PIS consent).
-    source_operation: openapi/obie-payment-initiation-openapi.yaml#CreateDomesticPaymentConsents
-  - name: create_domestic_payment
-    description: Initiate a domestic payment against an authorised consent.
-    source_operation: openapi/obie-payment-initiation-openapi.yaml#CreateDomesticPayments
-  - name: create_funds_confirmation_consent
-    description: Create a funds-confirmation consent (CBPII).
-    source_operation: openapi/obie-confirmation-funds-openapi.yaml#CreateFundsConfirmationConsents
-  - name: create_funds_confirmation
-    description: Confirm availability of funds on a customer account.
-    source_operation: openapi/obie-confirmation-funds-openapi.yaml#CreateFundsConfirmations
+- name: list_accounts
+  description: List the customer accounts authorised by an account-access consent.
+  source_operation: openapi/obie-account-info-openapi.yaml#GetAccounts
+- name: get_account_balances
+  description: Read balances for an account.
+  source_operation: openapi/obie-account-info-openapi.yaml#GetAccountsAccountIdBalances
+- name: get_account_transactions
+  description: Read transactions for an account.
+  source_operation: openapi/obie-account-info-openapi.yaml#GetAccountsAccountIdTransactions
+- name: create_account_access_consent
+  description: Create an account-access consent to authorise AIS read access.
+  source_operation: openapi/obie-account-info-openapi.yaml#CreateAccountAccessConsents
+- name: create_domestic_payment_consent
+  description: Register intent to initiate a domestic payment (PIS consent).
+  source_operation: openapi/obie-payment-initiation-openapi.yaml#CreateDomesticPaymentConsents
+- name: create_domestic_payment
+  description: Initiate a domestic payment against an authorised consent.
+  source_operation: openapi/obie-payment-initiation-openapi.yaml#CreateDomesticPayments
+- name: create_funds_confirmation_consent
+  description: Create a funds-confirmation consent (CBPII).
+  source_operation: openapi/obie-confirmation-funds-openapi.yaml#CreateFundsConfirmationConsents
+- name: create_funds_confirmation
+  description: Confirm availability of funds on a customer account.
+  source_operation: openapi/obie-confirmation-funds-openapi.yaml#CreateFundsConfirmations
+deployment:
+  mode: none
+  verified: derived
+  tools: 8
+  checked: '2026-08-12'
+  source: catalog MCP census
