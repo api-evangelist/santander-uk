@@ -18,6 +18,17 @@ description: Santander UK plc is a major British retail and commercial bank and 
   mutual-TLS client authentication, and PSD2 strong customer authentication.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
+- Financial-Services
+- Banking
+- Open Banking
+- PSD2
+- OBIE
+- CMA9
+- United Kingdom
+- Payments
+- Account Information
+- FAPI
+tags_raw:
 - Financial Services
 - Banking
 - Open Banking
@@ -41,6 +52,11 @@ apis:
   humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
   baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
   tags:
+  - Open Data
+  - ATMs
+  - Branches
+  - Product
+  tags_raw:
   - Open Data
   - ATMs
   - Branches
