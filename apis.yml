@@ -43,97 +43,648 @@ created: '2026-07-23'
 modified: '2026-07-23'
 specificationVersion: '0.23'
 apis:
-- aid: santander-uk:santander-uk-open-data-api
-  name: Santander UK Open Data API
-  description: Free, public, unauthenticated Open Data reference API publishing
-    Santander UK ATMs, branches, and product information (personal & business
-    current accounts, unsecured SME loans, commercial credit cards) per the OBIE
-    Open Data standard.
+- aid: santander-uk:santander-uk-account-access-consents-api
+  name: Santander UK Account Access Consents API
+  description: >-
+    The Account Access Consents API from Santander UK — 2 operation(s) for account access consents.
   humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
   baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
   tags:
-  - Open Data
-  - ATMs
-  - Branches
-  - Product
-  tags_raw:
-  - Open Data
-  - ATMs
-  - Branches
-  - Products
+  - Account Access Consents
   properties:
   - type: OpenAPI
-    url: openapi/obie-opendata-swagger.json
-  - type: Overlay
-    url: overlays/santander-uk-opendata-overlay.yaml
+    url: openapi/santander-uk-account-access-consents-api-openapi.yml
   - type: Documentation
     url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
   - type: APIReference
     url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
-- aid: santander-uk:santander-uk-account-information-api
-  name: Santander UK Account & Transaction Information API
-  description: OBIE Read/Write Account and Transaction Information (AIS) API for
-    accessing account, balance, transaction, and party data with customer consent.
-    FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA); onboarding via the Santander
-    Developers portal with OBIE/eIDAS certificates.
-  humanURL: https://developer.santander.co.uk/sanuk/external/product
-  baseURL: https://openbanking.santander.co.uk/open-banking/v3.1/aisp
-  tags:
-  - Account Information
-  - AIS
-  - Read/Write
-  properties:
-  - type: OpenAPI
-    url: openapi/obie-account-info-openapi.yaml
-  - type: Overlay
-    url: overlays/santander-uk-account-info-overlay.yaml
   - type: Documentation
     url: https://developer.santander.co.uk/sanuk/external/product
   - type: APIReference
     url: https://developer.santander.co.uk/sanuk/external/
-- aid: santander-uk:santander-uk-payment-initiation-api
-  name: Santander UK Payment Initiation API
-  description: OBIE Read/Write Payment Initiation (PIS) API for initiating domestic,
-    scheduled, standing-order, international, and file payments on behalf of
-    customers. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA); onboarding via the
-    Santander Developers portal with OBIE/eIDAS certificates.
-  humanURL: https://developer.santander.co.uk/sanuk/external/product
-  baseURL: https://openbanking.santander.co.uk/open-banking/v3.1/pisp
+- aid: santander-uk:santander-uk-accounts-api
+  name: Santander UK Accounts API
+  description: The Accounts API from Santander UK — 2 operation(s) for accounts.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
   tags:
-  - Payment Initiation
-  - PIS
-  - Read/Write
+  - Accounts
   properties:
   - type: OpenAPI
-    url: openapi/obie-payment-initiation-openapi.yaml
-  - type: Overlay
-    url: overlays/santander-uk-payment-initiation-overlay.yaml
+    url: openapi/santander-uk-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
   - type: Documentation
     url: https://developer.santander.co.uk/sanuk/external/product
   - type: APIReference
     url: https://developer.santander.co.uk/sanuk/external/
-- aid: santander-uk:santander-uk-confirmation-of-funds-api
-  name: Santander UK Confirmation of Funds API
-  description: OBIE Read/Write Confirmation of Funds (CBPII) API allowing an
-    authorised card-based payment instrument issuer to confirm the availability of
-    funds on a customer account. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA);
-    onboarding via the Santander Developers portal with OBIE/eIDAS certificates.
-  humanURL: https://developer.santander.co.uk/sanuk/external/product
-  baseURL: https://openbanking.santander.co.uk/open-banking/v3.1/cbpii
+- aid: santander-uk:santander-uk-atm-api
+  name: Santander UK ATM API
+  description: Endpoint for getting ATM data
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
   tags:
-  - Confirmation of Funds
-  - CBPII
-  - Read/Write
+  - ATM
   properties:
   - type: OpenAPI
-    url: openapi/obie-confirmation-funds-openapi.yaml
-  - type: Overlay
-    url: overlays/santander-uk-confirmation-funds-overlay.yaml
+    url: openapi/santander-uk-atm-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-balances-api
+  name: Santander UK Balances API
+  description: The Balances API from Santander UK — 2 operation(s) for balances.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Balances
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-balances-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-bca-api
+  name: Santander UK BCA API
+  description: Endpoint for getting Business Current Account data
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - BCA
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-bca-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-beneficiaries-api
+  name: Santander UK Beneficiaries API
+  description: The Beneficiaries API from Santander UK — 2 operation(s) for beneficiaries.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Beneficiaries
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-beneficiaries-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-branch-api
+  name: Santander UK Branch API
+  description: Endpoint for getting Branch data
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Branch
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-branch-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-ccc-api
+  name: Santander UK CCC API
+  description: Endpoint for getting Commercial Credit Card data
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - CCC
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-ccc-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-direct-debits-api
+  name: Santander UK Direct Debits API
+  description: The Direct Debits API from Santander UK — 2 operation(s) for direct debits.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Direct Debits
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-direct-debits-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-domestic-payment-consents-api
+  name: Santander UK Domestic Payment Consents API
+  description: >-
+    The Domestic Payment Consents API from Santander UK — 3 operation(s) for domestic payment consents.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Domestic Payment Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-domestic-payment-consents-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-domestic-payments-api
+  name: Santander UK Domestic Payments API
+  description: The Domestic Payments API from Santander UK — 3 operation(s) for domestic payments.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Domestic Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-domestic-payments-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-domestic-scheduled-payment-consents-api
+  name: Santander UK Domestic Scheduled Payment Consents API
+  description: >-
+    The Domestic Scheduled Payment Consents API from Santander UK — 2 operation(s) for domestic scheduled
+    payment consents.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Domestic Scheduled Payment Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-domestic-scheduled-payment-consents-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-domestic-scheduled-payments-api
+  name: Santander UK Domestic Scheduled Payments API
+  description: >-
+    The Domestic Scheduled Payments API from Santander UK — 3 operation(s) for domestic scheduled payments.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Domestic Scheduled Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-domestic-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-domestic-standing-order-consents-api
+  name: Santander UK Domestic Standing Order Consents API
+  description: >-
+    The Domestic Standing Order Consents API from Santander UK — 2 operation(s) for domestic standing
+    order consents.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Domestic Standing Order Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-domestic-standing-order-consents-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-domestic-standing-orders-api
+  name: Santander UK Domestic Standing Orders API
+  description: >-
+    The Domestic Standing Orders API from Santander UK — 3 operation(s) for domestic standing orders.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Domestic Standing Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-domestic-standing-orders-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-file-payment-consents-api
+  name: Santander UK File Payment Consents API
+  description: >-
+    The File Payment Consents API from Santander UK — 3 operation(s) for file payment consents.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - File Payment Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-file-payment-consents-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-file-payments-api
+  name: Santander UK File Payments API
+  description: The File Payments API from Santander UK — 4 operation(s) for file payments.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - File Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-file-payments-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-funds-confirmation-consents-api
+  name: Santander UK Funds Confirmation Consents API
+  description: >-
+    The Funds Confirmation Consents API from Santander UK — 2 operation(s) for funds confirmation consents.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Funds Confirmation Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-funds-confirmation-consents-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-funds-confirmations-api
+  name: Santander UK Funds Confirmations API
+  description: The Funds Confirmations API from Santander UK — 1 operation(s) for funds confirmations.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Funds Confirmations
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-funds-confirmations-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-international-payment-consents-api
+  name: Santander UK International Payment Consents API
+  description: >-
+    The International Payment Consents API from Santander UK — 3 operation(s) for international payment
+    consents.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - International Payment Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-international-payment-consents-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-international-payments-api
+  name: Santander UK International Payments API
+  description: >-
+    The International Payments API from Santander UK — 3 operation(s) for international payments.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - International Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-international-payments-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-international-scheduled-payments-api
+  name: Santander UK International Scheduled Payments API
+  description: >-
+    The International Scheduled Payments API from Santander UK — 3 operation(s) for international scheduled
+    payments.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - International Scheduled Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-international-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-international-scheduled-payments-consents-api
+  name: Santander UK International Scheduled Payments Consents API
+  description: >-
+    The International Scheduled Payments Consents API from Santander UK — 3 operation(s) for international
+    scheduled payments consents.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - International Scheduled Payments Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-international-scheduled-payments-consents-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-international-standing-orders-api
+  name: Santander UK International Standing Orders API
+  description: >-
+    The International Standing Orders API from Santander UK — 3 operation(s) for international standing
+    orders.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - International Standing Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-international-standing-orders-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-international-standing-orders-consents-api
+  name: Santander UK International Standing Orders Consents API
+  description: >-
+    The International Standing Orders Consents API from Santander UK — 2 operation(s) for international
+    standing orders consents.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - International Standing Orders Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-international-standing-orders-consents-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-offers-api
+  name: Santander UK Offers API
+  description: The Offers API from Santander UK — 2 operation(s) for offers.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Offers
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-offers-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-parties-api
+  name: Santander UK Parties API
+  description: The Parties API from Santander UK — 3 operation(s) for parties.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Parties
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-parties-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-pca-api
+  name: Santander UK PCA API
+  description: Endpoint for getting Personal Current Account data
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - PCA
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-pca-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-products-api
+  name: Santander UK Products API
+  description: The Products API from Santander UK — 2 operation(s) for products.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-products-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-scheduled-payments-api
+  name: Santander UK Scheduled Payments API
+  description: The Scheduled Payments API from Santander UK — 2 operation(s) for scheduled payments.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Scheduled Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-sme-api
+  name: Santander UK SME API
+  description: Endpoint for getting Unsecured SME Loan data
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - SME
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-sme-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-standing-orders-api
+  name: Santander UK Standing Orders API
+  description: The Standing Orders API from Santander UK — 2 operation(s) for standing orders.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Standing Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-standing-orders-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-statements-api
+  name: Santander UK Statements API
+  description: The Statements API from Santander UK — 5 operation(s) for statements.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Statements
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-statements-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
+  - type: Documentation
+    url: https://developer.santander.co.uk/sanuk/external/product
+  - type: APIReference
+    url: https://developer.santander.co.uk/sanuk/external/
+- aid: santander-uk:santander-uk-transactions-api
+  name: Santander UK Transactions API
+  description: The Transactions API from Santander UK — 2 operation(s) for transactions.
+  humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/santander-uk-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
+  - type: APIReference
+    url: https://api-portal.omni.slz.santander.co.uk/external/opendata/branches
   - type: Documentation
     url: https://developer.santander.co.uk/sanuk/external/product
   - type: APIReference
     url: https://developer.santander.co.uk/sanuk/external/
 common:
+- type: Overlay
+  url: overlays/santander-uk-opendata-overlay.yaml
+- type: Overlay
+  url: overlays/santander-uk-account-info-overlay.yaml
+- type: Overlay
+  url: overlays/santander-uk-payment-initiation-overlay.yaml
+- type: Overlay
+  url: overlays/santander-uk-confirmation-funds-overlay.yaml
 - type: MCPServer
   url: mcp/santander-uk-mcp.yml
 - type: AgenticAccess
