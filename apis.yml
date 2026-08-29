@@ -689,6 +689,9 @@ apis:
   - type: APIReference
     url: https://developer.santander.co.uk/sanuk/external/
 common:
+- type: CapabilityMap
+  url: capabilities/santander-uk-capability-edges.yml
+  name: Santander UK Business Capability Map
 - type: Overlay
   url: overlays/santander-uk-opendata-overlay.yaml
 - type: Overlay
