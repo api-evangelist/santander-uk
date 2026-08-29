@@ -16,6 +16,18 @@ description: Santander UK plc is a major British retail and commercial bank and 
   Initiation (PIS), and Confirmation of Funds (CBPII) - conformant to the Open
   Banking Implementation Entity standard and secured with FAPI-grade OAuth2/OIDC,
   mutual-TLS client authentication, and PSD2 strong customer authentication.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Financial-Services
