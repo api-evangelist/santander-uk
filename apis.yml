@@ -80,6 +80,8 @@ apis:
   humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
   baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -586,6 +588,8 @@ apis:
   humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
   baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -676,6 +680,8 @@ apis:
   humanURL: https://api-portal.omni.slz.santander.co.uk/external/opendata/atms
   baseURL: https://api-portal.omni.slz.santander.co.uk/external/opendata
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
