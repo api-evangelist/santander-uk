@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/santander-uk/integrations
+- https://n8n.io/integrations/santander-uk/
+- https://composio.dev/toolkits/santander-uk
+- https://monid.ai/tools/santander-uk
+checked:
+- https://composio.dev/toolkits/santander-uk
+- https://monid.ai/tools/santander-uk
+- https://n8n.io/integrations/santander-uk/
+- https://zapier.com/apps/santander-uk/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
